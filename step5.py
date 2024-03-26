@@ -1,7 +1,7 @@
 import subprocess
 import os 
-#
-# Change to the desired directory
+
+# Changing to the FoldTree directory
 dirname = "/home/vmadmin/fold_tree"
 os.chdir(dirname)
 
