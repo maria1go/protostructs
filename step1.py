@@ -42,13 +42,14 @@ def main():
     else:
         print("Please provide either --protein_id or sequence.")
         return
-
+        
     print(f"\n{get_sequence}")
 
+    
 #BLAST homology search
     number_alignments = args.alignments
     hitlist = args.hitlist
-
+    
     if get_sequence:
        blast_record = blast_homology_search(get_sequence, number_alignments, hitlist)
  
@@ -72,7 +73,7 @@ def main():
     subprocess.run(["python3", "step6.py"], check=True)
     
     #Step 7 - Extracting sequences and identifiers from Foldseek result
-    subprocess.run(["python3", "step7.1.py"], check=True)
+    subprocess.run(["python3", "step7.py"], check=True)
 
     #Step 8 - Running FoldTree
     subprocess.run(["python3", "step8.py"], check=True)
