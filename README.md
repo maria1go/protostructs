@@ -1,7 +1,7 @@
 ## External dependencies.
 This pipeline depends on the following external programs:
-- MAFFT (version ...)
-- HHfilter (version ...)
+- MAFFT (v7.490)
+- HHfilter (3.3.0)
 - FoldTree
 
 ## 
