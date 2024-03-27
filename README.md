@@ -1,4 +1,4 @@
-## External dependencies.
+## External dependencies
 This pipeline depends on the following external programs:
 - MAFFT (v7.490)
 - HHfilter (3.3.0)
@@ -31,7 +31,7 @@ mkdir fromstr
 
 ```
  
-##Workflow
+## Workflow
 
 run step1.py entering either protein Uniprot ID or the sequence:
 
