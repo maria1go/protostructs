@@ -21,3 +21,15 @@ try:
 except subprocess.CalledProcessError as e:
     print("Error executing command:", e)
 
+#Copy .structs to the current directory
+
+import shutil
+
+source = "/home/vmadmin/fold_tree/fromstr/structs"
+destination = "/home/vmadmin/pipeline/str"
+
+try:
+    shutil.copytree(source, destination)
+    print("Results in str folder")
+except OSError as e:
+    print("Error retrieving results")
