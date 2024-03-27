@@ -23,4 +23,13 @@ except subprocess.CalledProcessError as e:
 
 
 ###Enter .structs folder and copy to output folder?
+import shutil
 
+source = "/home/vmadmin/fold_tree/fromseq/structs"
+destination = "/home/vmadmin/pipeline/seq"
+
+try:
+    shutil.copytree(source, destination)
+    print("Results in seq folder")
+except OSError as e:
+    print("Error retrieving results")
