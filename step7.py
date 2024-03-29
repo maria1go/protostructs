@@ -93,7 +93,6 @@ with open("alignment.fasta", "r") as aln:
     for line in aln:
         if line.startswith(">"):
             if id_aln and seq_aln:
-                identifiers_aln.append(id_aln)
                 sequences_aln.append(seq_aln)
             id_aln = line.strip().split('.')[0][1:]
             seq_aln = ""
@@ -101,19 +100,13 @@ with open("alignment.fasta", "r") as aln:
         else:
             seq_aln += line.strip()
 
-    if id_aln and seq_aln:
-        sequences_aln.append(seq_aln)
-
-print(identifiers_aln)
 
 with open("filtered.alignment.fasta", 'w') as content_fasta:
     for id_aln, seq_aln in zip (identifiers_aln, sequences_aln):
-#        print("id_aln:", id_aln)
-#        print(seq_aln)
         if id_aln in filtered_ids:
             content_fasta.write(">" + id_aln + "\n" + seq_aln + "\n")
 
-print("Written", content_fasta)
+print("Written to filtered.alignment.fasta")
 
 ##PREVIOUS VERSION - UNFILTERED SEQUENCES FROM ALIGNMENT.FASTA WERE ALL WRITTEN TO THE NEW FILE
 
