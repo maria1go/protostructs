@@ -46,7 +46,7 @@ python3 step1.py --sequence {SEQUENCE}
 ## Result
 Two sets of relevant protein structures in .pdb format: one sequence-based, and  another structure-based. 
 
-#Files:
+Files:
 1. alignment.fasta - homology search result (BLAST)
 2. msa.fasta - MSA of BLAST homologs (MAFFT)
 3. msa.filtered.fasta - filtered MSA (HHfilter)
