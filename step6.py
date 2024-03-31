@@ -3,7 +3,7 @@
 #Fetching .pdb of the original input protein
 import os
 
-pdb_folder = "/home/vmadmin/fold_tree/fromseq/structs"
+pdb_folder = "fold_tree/fromseq/structs"
 
 
 identifiers_file = "identifiers.txt"
@@ -109,7 +109,7 @@ if __name__ == "__main__":
     filename = f"{ticket}.tar.gz"
     print(filename)
     
-    extraction_path = "/home/vmadmin/pipeline/"
+    extraction_path = "pipeline/"
 
     extract_m8_file(filename)
     print("Result file is saved.")
