@@ -8,10 +8,10 @@
 #####!seq.fasta is not appended to str.fasta directly since it was filtered by HHfilter after MSA! 
 #####The ids are mapped between filtered.msa. and seq.fasta, and only seqs of proteins present in filtered.msa are appended to combined file.
 
-m8_file = "/home/vmadmin/pipeline/alis_afdb-swissprot.m8"
+m8_file = "pipeline/alis_afdb-swissprot.m8"
 output_file = "identifiers.txt"
 fasta_file = "str_alignment.fasta"
-output_folder = "/home/vmadmin/fold_tree/fromstr"
+output_folder = "fold_tree/fromstr"
 combined_file = "combined.fasta"
 
 identifiers = []
