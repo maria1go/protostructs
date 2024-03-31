@@ -2,7 +2,7 @@ import subprocess
 import os
 #
 # Change to the desired directory
-dirname = "/home/vmadmin/fold_tree"
+dirname = "fold_tree"
 os.chdir(dirname)
 
 
@@ -25,8 +25,8 @@ except subprocess.CalledProcessError as e:
 
 import shutil
 
-source = "/home/vmadmin/fold_tree/fromstr/structs"
-destination = "/home/vmadmin/pipeline/str"
+source = "fold_tree/fromstr/structs"
+destination = "pipeline/str"
 
 try:
     shutil.copytree(source, destination)
