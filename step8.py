@@ -26,7 +26,7 @@ except subprocess.CalledProcessError as e:
 import shutil
 
 source = "fold_tree/fromstr/structs"
-destination = "pipeline/str"
+destination = "example/str"
 
 try:
     shutil.copytree(source, destination)
