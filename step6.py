@@ -6,7 +6,7 @@ import os
 pdb_folder = "fold_tree/fromseq/structs"
 
 
-identifiers_file = "identifiers.txt"
+identifiers_file = "fold_tree/fromseq/identifiers.txt"
 with open(identifiers_file, 'r') as f:
     first_line = f.readline().strip()  
 
