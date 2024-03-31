@@ -22,7 +22,7 @@ apt install hhsuite
 conda install -c conda-forge bioconda::snakemake
 ```
 
-4. Clone [FoldTree](https://github.com/DessimozLab/fold_tree).
+4. Clone [FoldTree](https://github.com/DessimozLab/fold_tree). Install its dependencies (from ./workflow/config/fold_tree.yaml).
 
 ! In fold_tree directory, set up 2 folders for the pipeline:
 ```
