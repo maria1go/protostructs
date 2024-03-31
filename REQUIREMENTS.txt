@@ -2,6 +2,4 @@ biopython
 matplotlib
 numpy
 requests
-tarfile
-time
 
