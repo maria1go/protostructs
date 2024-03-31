@@ -15,9 +15,14 @@ This pipeline depends on the following external programs:
 apt install hhsuite
 
 ```
-3. Clone [FoldTree](https://github.com/DessimozLab/fold_tree).
 
-! Creating a separate environment is not necessary. Just clone the repo.
+3. Install [snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) which is required by FoldTree. Do not create a separate environment for it. Recommended installation command (using Conda):
+
+```
+conda install -c conda-forge bioconda::snakemake
+```
+
+4. Clone [FoldTree](https://github.com/DessimozLab/fold_tree).
 
 ! In fold_tree directory, set up 2 folders for the pipeline:
 ```
@@ -25,13 +30,13 @@ mkdir fromseq fromstr
 
 ```
 
-4. Install requirements:
+5. Install requirements:
 
 ```
 pip install -r REQUIREMENTS.txt
 ```
 
-5. Run step1.py entering either protein Uniprot ID or the sequence:
+6. Run step1.py entering either protein Uniprot ID or the sequence:
 
 ```
 python3 step1.py --protein_id {ID}
