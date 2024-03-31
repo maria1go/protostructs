@@ -2,7 +2,7 @@ import subprocess
 import os 
 
 # Changing to the FoldTree directory
-dirname = "/home/vmadmin/fold_tree"
+dirname = "fold_tree"
 os.chdir(dirname)
 
 
@@ -25,8 +25,8 @@ except subprocess.CalledProcessError as e:
 ###Enter .structs folder and copy to output folder?
 import shutil
 
-source = "/home/vmadmin/fold_tree/fromseq/structs"
-destination = "/home/vmadmin/pipeline/seq"
+source = "fold_tree/fromseq/structs"
+destination = "pipeline/seq"
 
 try:
     shutil.copytree(source, destination)
