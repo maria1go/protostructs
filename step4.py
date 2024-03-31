@@ -12,7 +12,7 @@ with open("msa.filtered.fasta", 'r') as f:
 ##TRANSFER IDENTIFIERS TO RIGHT FOLDERS
 
 #output_folders = ["/home/vmadmin/fold_tree/fromseq", "/home/vmadmin/pipeline"]
-output_folder = "/home/vmadmin/fold_tree/fromseq"
+output_folder = "fold_tree/fromseq"
 
 os.makedirs(output_folder, exist_ok=True)
 
