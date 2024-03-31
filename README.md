@@ -9,9 +9,10 @@ This pipeline depends on the following external programs:
 ## Workflow
 1. Install [MAFFT](https://mafft.cbrc.jp/alignment/software/).
 
-2. Download hhfilter.1.gz from: https://manpages.ubuntu.com/manpages/jammy/man1/hhfilter.1.html. Unzip the file:
+2. Install HH-suite for HHfilter:
+
 ```
-gzip -d hhfilter.1.gz
+apt install hhsuite
 
 ```
 3. Clone [FoldTree](https://github.com/DessimozLab/fold_tree).
