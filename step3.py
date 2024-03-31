@@ -6,7 +6,7 @@ input_file = "msa.fasta"
 output_file = "msa.filtered.fasta"
 
 def filter_sequences(input_file, output_file):
-    hhfilter_command = f"/usr/bin/hhfilter -M first -i {input_file} -o {output_file}"
+    hhfilter_command = f"hhfilter -M first -i {input_file} -o {output_file}"
     subprocess.call(hhfilter_command, shell=True)
 
 def main():
