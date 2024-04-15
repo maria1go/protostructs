@@ -73,5 +73,5 @@ def plot_msa_coverage(filename: str, mapping: dict = None,
                   curve_color=curve_color, gap_int=mapping['-'], savename=savename)
 
 
-filename = 'msa.fasta'
-plot_msa_coverage(filename, figsize=(30, 5),savename='seq_alignment_coverage.png', curve_alpha=0.5)
+filename = 'results/msa.fasta'
+plot_msa_coverage(filename, figsize=(30, 5),savename='results/seq_alignment_coverage.png', curve_alpha=0.5)
