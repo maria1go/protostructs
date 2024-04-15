@@ -1,8 +1,9 @@
 import subprocess
 import os
-#
-# Change to the desired directory
-dirname = "/home/vmadmin/fold_tree"
+
+# Change to Foldtree directoty 
+target_dirname = "fold_tree"
+dirname = os.path.join(os.path.expanduser("~"), target_dirname)
 os.chdir(dirname)
 
 
@@ -24,9 +25,14 @@ except subprocess.CalledProcessError as e:
 #Copy .structs to the current directory
 
 import shutil
+structs_dirname = "fold_tree/fromstr/structs"
+structs = os.path.join(os.path.expanduser("~"), structs_dirname)
+source = structs
 
-source = "/home/vmadmin/fold_tree/fromstr/structs"
-destination = "/home/vmadmin/pipeline/str"
+pipeline_dirname = "protostructs/results"
+pipeline = os.path.join(os.path.expanduser("~"), pipeline_dirname)
+os.chdir(pipeline)
+destination = "str"
 
 try:
     shutil.copytree(source, destination)
