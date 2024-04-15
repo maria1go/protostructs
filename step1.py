@@ -19,7 +19,7 @@ def protein_sequence(protein_id):
 def blast_homology_search(sequence, number_alignments, hitlist):
     result_handle = NCBIWWW.qblast("blastp", "swissprot", sequence, alignments=number_alignments, hitlist_size=hitlist)
     blast_record = NCBIXML.read(result_handle)
-    with open("alignment.fasta", "w") as output_file:
+    with open("results/alignment.fasta", "w") as output_file:
         for alignment in blast_record.alignments:
             for hsp in alignment.hsps:
                 output_file.write(">{}\n".format(alignment.title.split('|')[1]))
