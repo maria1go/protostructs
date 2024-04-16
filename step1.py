@@ -19,13 +19,17 @@ def protein_sequence(protein_id):
 def blast_homology_search(sequence, number_alignments, hitlist):
     result_handle = NCBIWWW.qblast("blastp", "swissprot", sequence, alignments=number_alignments, hitlist_size=hitlist)
     blast_record = NCBIXML.read(result_handle)
-    with open("alignment.fasta", "w") as output_file:
+    with open("results/alignment.fasta", "w") as output_file:
         for alignment in blast_record.alignments:
             for hsp in alignment.hsps:
                 output_file.write(">{}\n".format(alignment.title.split('|')[1]))
                 output_file.write("{}\n".format(hsp.sbjct))
 
 def main():
+    directory_name = "results"
+    if not os.path.exists(directory_name):
+        os.makedirs(directory_name)
+        
     parser = argparse.ArgumentParser(description='Fetch protein sequence from UniProt and perform BLAST homology search')
     parser.add_argument('--protein_id', type=str, help='UniProt protein ID')
     parser.add_argument('--sequence', type=str, help='Manually entered protein sequence')
