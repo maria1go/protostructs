@@ -2,8 +2,7 @@ import subprocess
 import os
 
 # Change to Foldtree directoty 
-target_dirname = "fold_tree"
-dirname = os.path.join(os.path.expanduser("~"), target_dirname)
+dirname = "../fold_tree"
 os.chdir(dirname)
 
 
@@ -26,12 +25,10 @@ except subprocess.CalledProcessError as e:
 import shutil
 
 
-structs_dirname = "fold_tree/fromstr/structs"
-structs = os.path.join(os.path.expanduser("~"), structs_dirname)
+structs = "../fold_tree/fromstr/structs"
 source = structs
 
-pipeline_dirname = "protostructs/results"
-pipeline = os.path.join(os.path.expanduser("~"), pipeline_dirname)
+pipeline = "../protostructs/results"
 os.chdir(pipeline)
 destination = "str"
 
