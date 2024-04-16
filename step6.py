@@ -3,12 +3,9 @@
 #Fetching .pdb of the original input protein
 import os
 
-pdb_folder_name = "fold_tree/fromseq/structs"
-pdb_folder = os.path.join(os.path.expanduser("~"), pdb_folder_name)
-
-
-
+pdb_folder = "../fold_tree/fromseq/structs"
 identifiers_file = "results/identifiers_seq.txt"
+
 with open(identifiers_file, 'r') as f:
     first_line = f.readline().strip()  
 
@@ -110,8 +107,7 @@ if __name__ == "__main__":
     filename = f"results/{ticket}.tar.gz"
     print(filename)
     
-    pipeline_dirname = "protostructs/results"
-    pipeline = os.path.join(os.path.expanduser("~"), pipeline_dirname)
+    pipeline = "../protostructs/results"
     extraction_path = pipeline
 
     extract_m8_file(filename)
