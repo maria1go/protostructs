@@ -9,16 +9,14 @@
 import os
 import shutil
 
-pipeline_dirname = "protostructs/results"
-pipeline = os.path.join(os.path.expanduser("~"), pipeline_dirname)
+pipeline = "../protostructs/results"
 
 m8_file = os.path.join(pipeline,"alis_afdb-swissprot.m8")
 output_file = os.path.join(pipeline,"identifiers.txt")
 fasta_file = os.path.join(pipeline, "str_alignment.fasta")
 combined_file = os.path.join(pipeline,"combined.fasta")
 
-str_dirname = "fold_tree/fromstr"
-str = os.path.join(os.path.expanduser("~"), str_dirname)
+str = "../fold_tree/fromstr"
 output_folder = str
 
 
@@ -27,7 +25,7 @@ sequences = []
 
 #Reading query id+sequence since it is absent in .m8 file
 
-with open("alignment.fasta", "r") as f:
+with open("results/alignment.fasta", "r") as f:
     sequence_id = ""
     seq = ""
     for line in f:
@@ -82,13 +80,11 @@ print("Identifiers written to the foldtree directory.")
 import shutil
 
 
-ids_seq_dirname = "fold_tree/fromstr"
-ids_seq = os.path.join(os.path.expanduser("~"), ids_seq_dirname)
+ids_seq = "../fold_tree/fromstr"
 source = os.path.join(ids_seq, "identifiers.txt")
 
 
-pipeline_ids_dirname = "protostructs/results/identifiers_str.txt"
-pipeline_ids = os.path.join(os.path.expanduser("~"), pipeline_ids_dirname)
+pipeline_ids = "../protostructs/results/identifiers_str.txt"
 destination = pipeline_ids
 
 try:
