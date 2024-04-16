@@ -7,33 +7,36 @@ This pipeline depends on the following external programs:
 - FoldTree
 
 ## Workflow
-1. Install MAFFT 
+1. Install [MAFFT](https://mafft.cbrc.jp/alignment/software/).
+
+2. Install HH-suite for HHfilter:
 
 ```
-sudo apt install mafft
+apt install hhsuite
 
 ```
-2. Install HHfilter 
-Download hhfilter.1.gz from: https://manpages.ubuntu.com/manpages/jammy/man1/hhfilter.1.html
+
+3. Install [snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) which is required by FoldTree. Do not create a separate environment for it. Recommended installation command (using Conda):
 
 ```
-gzip -d hhfilter.1.gz
-
+conda install -c conda-forge bioconda::snakemake
 ```
-3. Install FoldTree.
-Instructions are available: https://github.com/DessimozLab/fold_tree
 
-! Creating a separate environment is not necessary. Just clone the repo.
+4. Clone [FoldTree](https://github.com/DessimozLab/fold_tree). Install its dependencies (from ./workflow/config/fold_tree.yaml).
 
 ! In fold_tree directory, set up 2 folders for the pipeline:
 ```
-mkdir fromseq
-
-mkdir fromstr
+mkdir fromseq fromstr
 
 ```
 
-run step1.py entering either protein Uniprot ID or the sequence:
+5. Install requirements:
+
+```
+pip install -r REQUIREMENTS.txt
+```
+
+6. Run step1.py entering either protein Uniprot ID or the sequence:
 
 ```
 python3 step1.py --protein_id {ID}

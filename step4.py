@@ -1,4 +1,5 @@
 import os
+import shutil
 #Extracting protein identifiers from MSA file
 
 
@@ -8,11 +9,10 @@ with open("results/msa.filtered.fasta", 'r') as f:
         if line.startswith('>'):
             identifier = line.strip().split('.')[0][1:]
             identifiers.append(identifier)
-
+            
 ##TRANSFER IDENTIFIERS TO FOLDTREE
 
-output_folder_name = "fold_tree"
-output_folder = os.path.join(os.path.expanduser("~"), output_folder_name)  
+output_folder_name = "fold_tree/fromseq"
 os.makedirs(output_folder, exist_ok=True)
 
 output_file = os.path.join(output_folder, "identifiers.txt")

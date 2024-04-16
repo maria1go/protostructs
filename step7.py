@@ -1,6 +1,5 @@
 ##Preparing .fasta files and identifiers.txt
 
-
 #Extracting identifiers, identifiers+sequences from Foldseek output, writing seq + str .fasta
 #1) Identifiers are used in FoldTree for obtaining .pdb structures
 #2) identifiers+sequences (str) are written to .fasta file for MSA and visualization
@@ -8,6 +7,7 @@
 #####!seq.fasta is not appended to str.fasta directly since it was filtered by HHfilter after MSA! 
 #####The ids are mapped between filtered.msa. and seq.fasta, and only seqs of proteins present in filtered.msa are appended to combined file.
 import os
+import shutil
 
 pipeline_dirname = "protostructs/results"
 pipeline = os.path.join(os.path.expanduser("~"), pipeline_dirname)
@@ -19,7 +19,8 @@ combined_file = os.path.join(pipeline,"combined.fasta")
 
 str_dirname = "fold_tree/fromstr"
 str = os.path.join(os.path.expanduser("~"), str_dirname)
-output_folder = str 
+output_folder = str
+
 
 identifiers = []
 sequences = []
@@ -61,7 +62,9 @@ with open(fasta_file, 'w') as f:
 
 print("Sequences written to:", fasta_file)
 
+
 ##TRANSFER IDENTIFIERS TO FOLDTREE
+
 import os
 
 os.makedirs(output_folder, exist_ok=True)
@@ -75,7 +78,9 @@ with open(output_file2, 'w') as f:
 print("Identifiers written to the foldtree directory.")
 
 ##COPY IDENTIFIERS TO RESULTS
+
 import shutil
+
 
 ids_seq_dirname = "fold_tree/fromstr"
 ids_seq = os.path.join(os.path.expanduser("~"), ids_seq_dirname)
@@ -126,7 +131,6 @@ with open("results/filtered.alignment.fasta", 'w') as content_fasta:
 print("Written to filtered.alignment.fasta")
 
 #FASTA COMBINED
-
 with open("results/filtered.alignment.fasta", 'r') as fasta, open(fasta_file, 'r') as fasta2:
     fasta1_seq = fasta.read()
     fasta2_seq = fasta2.read()
