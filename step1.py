@@ -26,6 +26,10 @@ def blast_homology_search(sequence, number_alignments, hitlist):
                 output_file.write("{}\n".format(hsp.sbjct))
 
 def main():
+    directory_name = "results"
+    if not os.path.exists(directory_name):
+        os.makedirs(directory_name)
+        
     parser = argparse.ArgumentParser(description='Fetch protein sequence from UniProt and perform BLAST homology search')
     parser.add_argument('--protein_id', type=str, help='UniProt protein ID')
     parser.add_argument('--sequence', type=str, help='Manually entered protein sequence')
