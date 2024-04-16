@@ -1,18 +1,25 @@
 ##Preparing .fasta files and identifiers.txt
 
-
 #Extracting identifiers, identifiers+sequences from Foldseek output, writing seq + str .fasta
 #1) Identifiers are used in FoldTree for obtaining .pdb structures
 #2) identifiers+sequences (str) are written to .fasta file for MSA and visualization
 #3) 2 .fasta files are combined for MSA of proteins found both by sequence-based + structure-based approaches.
 #####!seq.fasta is not appended to str.fasta directly since it was filtered by HHfilter after MSA! 
 #####The ids are mapped between filtered.msa. and seq.fasta, and only seqs of proteins present in filtered.msa are appended to combined file.
+import os
+import shutil
 
-m8_file = "example/alis_afdb-swissprot.m8"
-output_file = "identifiers.txt"
-fasta_file = "str_alignment.fasta"
-output_folder = "fold_tree/fromstr"
-combined_file = "combined.fasta"
+pipeline_dirname = "protostructs/results"
+pipeline = os.path.join(os.path.expanduser("~"), pipeline_dirname)
+
+m8_file = os.path.join(pipeline,"alis_afdb-swissprot.m8")
+output_file = os.path.join(pipeline,"identifiers.txt")
+fasta_file = os.path.join(pipeline, "str_alignment.fasta")
+combined_file = os.path.join(pipeline,"combined.fasta")
+
+str_dirname = "fold_tree/fromstr"
+str = os.path.join(os.path.expanduser("~"), str_dirname)
+output_folder = str
 
 identifiers = []
 sequences = []
@@ -54,11 +61,8 @@ with open(fasta_file, 'w') as f:
 
 print("Sequences written to:", fasta_file)
 
-##TRANSFER IDENTIFIERS TO THE RIGHT FOLDER FOR FOLDTREE
 
-import os
-
-#output_folder = "/home/vmadmin/fold_tree/fromstr"
+##TRANSFER IDENTIFIERS TO FOLDTREE
 
 os.makedirs(output_folder, exist_ok=True)
 
@@ -72,11 +76,27 @@ with open(output_file2, 'w') as f:
 
 print("Identifiers written to the foldtree directory.")
 
+##COPY IDENTIFIERS TO RESULTS
+
+ids_seq_dirname = "fold_tree/fromstr"
+ids_seq = os.path.join(os.path.expanduser("~"), ids_seq_dirname)
+source = os.path.join(ids_seq, "identifiers.txt")
+
+
+pipeline_ids_dirname = "protostructs/results/identifiers_str.txt"
+pipeline_ids = os.path.join(os.path.expanduser("~"), pipeline_ids_dirname)
+destination = pipeline_ids
+
+try:
+    shutil.copy(source, destination)
+    print("identifiers copied to results folder")
+except OSError as e:
+    print("Error", e)
 
 #FILTERING
 
 filtered_ids = set()
-with open("msa.filtered.fasta", 'r') as filtered_file:
+with open("results/msa.filtered.fasta", 'r') as filtered_file:
     for line in filtered_file:
         if line.startswith(">"):
             filtered_ids.add(line.strip().split('.')[0][1:])
@@ -87,7 +107,7 @@ print(filtered_ids)
 identifiers_aln = []
 sequences_aln = []
 
-with open("alignment.fasta", "r") as aln:
+with open("results/alignment.fasta", "r") as aln:
     id_aln = ""
     seq_aln = ""
     for line in aln:
@@ -101,19 +121,15 @@ with open("alignment.fasta", "r") as aln:
             seq_aln += line.strip()
 
 
-with open("filtered.alignment.fasta", 'w') as content_fasta:
+with open("results/filtered.alignment.fasta", 'w') as content_fasta:
     for id_aln, seq_aln in zip (identifiers_aln, sequences_aln):
         if id_aln in filtered_ids:
             content_fasta.write(">" + id_aln + "\n" + seq_aln + "\n")
 
 print("Written to filtered.alignment.fasta")
 
-##PREVIOUS VERSION - UNFILTERED SEQUENCES FROM ALIGNMENT.FASTA WERE ALL WRITTEN TO THE NEW FILE
-
-
 #FASTA COMBINED
-
-with open("filtered.alignment.fasta", 'r') as fasta, open(fasta_file, 'r') as fasta2:
+with open("results/filtered.alignment.fasta", 'r') as fasta, open(fasta_file, 'r') as fasta2:
     fasta1_seq = fasta.read()
     fasta2_seq = fasta2.read()
 
