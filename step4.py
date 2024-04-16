@@ -12,11 +12,10 @@ with open("results/msa.filtered.fasta", 'r') as f:
             
 ##TRANSFER IDENTIFIERS TO FOLDTREE
 
-output_folder_name = "fold_tree/fromseq"
+output_folder = "../fold_tree/fromseq"
 os.makedirs(output_folder, exist_ok=True)
 
 output_file = os.path.join(output_folder, "identifiers.txt")
-#output_file = 'identifiers.txt'
 
 with open(output_file, 'w') as f:
     for identifier in identifiers:
@@ -27,14 +26,8 @@ print("Identifiers written to:", output_file)
 ##COPY IDENTIFIERS.TXT TO RESULTS 
 import shutil
 
-ids_seq_dirname = "fold_tree/fromseq"
-ids_seq = os.path.join(os.path.expanduser("~"), ids_seq_dirname)
-source = os.path.join(ids_seq, "identifiers.txt")
-
-
-pipeline_ids_dirname = "protostructs/results/identifiers_seq.txt"
-pipeline_ids = os.path.join(os.path.expanduser("~"), pipeline_ids_dirname)
-destination = pipeline_ids
+source = "../fold_tree/fromseq/identifiers.txt"
+destination = "../protostructs/results/identifiers_seq.txt"
 
 try:
     shutil.copy(source, destination)
