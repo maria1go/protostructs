@@ -1,8 +1,9 @@
 import subprocess
 import os
-#
-# Change to the desired directory
-dirname = "fold_tree"
+
+# Change to Foldtree directoty 
+target_dirname = "fold_tree"
+dirname = os.path.join(os.path.expanduser("~"), target_dirname)
 os.chdir(dirname)
 
 
@@ -25,8 +26,14 @@ except subprocess.CalledProcessError as e:
 
 import shutil
 
-source = "fold_tree/fromstr/structs"
-destination = "example/str"
+structs_dirname = "fold_tree/fromstr/structs"
+structs = os.path.join(os.path.expanduser("~"), structs_dirname)
+source = structs
+
+pipeline_dirname = "protostructs/results"
+pipeline = os.path.join(os.path.expanduser("~"), pipeline_dirname)
+os.chdir(pipeline)
+destination = "str"
 
 try:
     shutil.copytree(source, destination)
