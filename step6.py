@@ -3,10 +3,11 @@
 #Fetching .pdb of the original input protein
 import os
 
-pdb_folder = "fold_tree/fromseq/structs"
+pdb_folder_name = "fold_tree/fromseq/structs"
+pdb_folder = os.path.join(os.path.expanduser("~"), pdb_folder_name)
 
 
-identifiers_file = "fold_tree/fromseq/identifiers.txt"
+identifiers_file = "results/identifiers_seq.txt"
 with open(identifiers_file, 'r') as f:
     first_line = f.readline().strip()  
 
@@ -67,16 +68,15 @@ import tarfile
 def download_output_file(ticket):
     url = f'https://search.foldseek.com/api/result/download/{ticket}'
     response = requests.get(url)
-#    filename = f"{ticket}.tar.gz"
     if response.status_code == 200:
-        with open(f'{ticket}.tar.gz', 'wb') as f:
+        with open(f'results/{ticket}.tar.gz', 'wb') as f:
             f.write(response.content)
         print("Output file downloaded successfully,")
     else:
         print("Failed to download output file. Status code:", response.status_code)
 
 
-def extract_m8_file(filename, extraction_path="."):
+def extract_m8_file(filename, extraction_path="results"):
     with tarfile.open(filename, "r:gz") as tar:
          m8_file = tar.extractfile("alis_afdb-swissprot.m8") 
          if m8_file:
@@ -106,10 +106,12 @@ if __name__ == "__main__":
     download_output_file(ticket)
     print("Output file downloaded.")
     
-    filename = f"{ticket}.tar.gz"
+    filename = f"results/{ticket}.tar.gz"
     print(filename)
     
-    extraction_path = "pipeline/"
+    pipeline_dirname = "protostructs/results"
+    pipeline = os.path.join(os.path.expanduser("~"), pipeline_dirname)
+    extraction_path = pipeline
 
     extract_m8_file(filename)
     print("Result file is saved.")
