@@ -3,8 +3,7 @@ import shutil
 import os 
 
 # Changing to the FoldTree directory
-target_dirname = "fold_tree"
-dirname = os.path.join(os.path.expanduser("~"), target_dirname)
+dirname = "../fold_tree"
 os.chdir(dirname)
 
 command = [
@@ -24,24 +23,14 @@ except subprocess.CalledProcessError as e:
 
 
 ###Enter .structs folder and copy to output folder
+source = "../fold_tree/fromseq/structs"
 
-structs_dirname = "fold_tree/fromseq/structs"
-structs = os.path.join(os.path.expanduser("~"), structs_dirname)
-source = structs
-
-import shutil
-
-structs_dirname = "fold_tree/fromseq/structs"
-structs = os.path.join(os.path.expanduser("~"), structs_dirname)
-source = structs
-
-pipeline_dirname = "protostructs/results"
-pipeline = os.path.join(os.path.expanduser("~"), pipeline_dirname)
+pipeline = "../protostructs"
 os.chdir(pipeline)
-destination = "seq"
+destination = "results/seq"
 
 try:
     shutil.copytree(source, destination)
     print("Results in seq folder")
 except OSError as e:
-    print("Error retrieving results")
+    print("Error retrieving results", e)
