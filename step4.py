@@ -13,8 +13,6 @@ with open("results/msa.filtered.fasta", 'r') as f:
 ##TRANSFER IDENTIFIERS TO FOLDTREE
 
 output_folder_name = "fold_tree/fromseq"
-output_folder = os.path.join(os.path.expanduser("~"), output_folder_name)  
-
 os.makedirs(output_folder, exist_ok=True)
 
 output_file = os.path.join(output_folder, "identifiers.txt")
@@ -23,7 +21,6 @@ output_file = os.path.join(output_folder, "identifiers.txt")
 with open(output_file, 'w') as f:
     for identifier in identifiers:
         f.write(identifier + '\n')
-
 
 print("Identifiers written to:", output_file)
 
@@ -44,3 +41,4 @@ try:
     print("identifiers copied to results folder")
 except OSError as e:
     print("Error", e)
+

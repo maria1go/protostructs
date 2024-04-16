@@ -7,7 +7,6 @@ target_dirname = "fold_tree"
 dirname = os.path.join(os.path.expanduser("~"), target_dirname)
 os.chdir(dirname)
 
-
 command = [
     "snakemake",
     "--cores", "4",
@@ -25,6 +24,12 @@ except subprocess.CalledProcessError as e:
 
 
 ###Enter .structs folder and copy to output folder
+
+structs_dirname = "fold_tree/fromseq/structs"
+structs = os.path.join(os.path.expanduser("~"), structs_dirname)
+source = structs
+
+import shutil
 
 structs_dirname = "fold_tree/fromseq/structs"
 structs = os.path.join(os.path.expanduser("~"), structs_dirname)

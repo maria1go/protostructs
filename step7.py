@@ -21,6 +21,7 @@ str_dirname = "fold_tree/fromstr"
 str = os.path.join(os.path.expanduser("~"), str_dirname)
 output_folder = str
 
+
 identifiers = []
 sequences = []
 
@@ -64,10 +65,10 @@ print("Sequences written to:", fasta_file)
 
 ##TRANSFER IDENTIFIERS TO FOLDTREE
 
+import os
+
 os.makedirs(output_folder, exist_ok=True)
-
 output_file2 = os.path.join(output_folder, "identifiers.txt")
-
 
 with open(output_file2, 'w') as f:
     for identifier in identifiers:
@@ -77,6 +78,9 @@ with open(output_file2, 'w') as f:
 print("Identifiers written to the foldtree directory.")
 
 ##COPY IDENTIFIERS TO RESULTS
+
+import shutil
+
 
 ids_seq_dirname = "fold_tree/fromstr"
 ids_seq = os.path.join(os.path.expanduser("~"), ids_seq_dirname)
@@ -101,8 +105,6 @@ with open("results/msa.filtered.fasta", 'r') as filtered_file:
         if line.startswith(">"):
             filtered_ids.add(line.strip().split('.')[0][1:])
 print(filtered_ids)
-
-
 
 identifiers_aln = []
 sequences_aln = []

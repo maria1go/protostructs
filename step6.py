@@ -7,6 +7,7 @@ pdb_folder_name = "fold_tree/fromseq/structs"
 pdb_folder = os.path.join(os.path.expanduser("~"), pdb_folder_name)
 
 
+
 identifiers_file = "results/identifiers_seq.txt"
 with open(identifiers_file, 'r') as f:
     first_line = f.readline().strip()  

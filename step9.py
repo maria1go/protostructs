@@ -11,6 +11,7 @@ def main():
     align_sequences("results/str_alignment.fasta", "results/str_msa.fasta")
     print("MSA completed.", output_file)
 
+
 if __name__=="__main__":
     main()
 

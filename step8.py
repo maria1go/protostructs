@@ -23,8 +23,8 @@ except subprocess.CalledProcessError as e:
     print("Error executing command:", e)
 
 #Copy .structs to the current directory
-
 import shutil
+
 
 structs_dirname = "fold_tree/fromstr/structs"
 structs = os.path.join(os.path.expanduser("~"), structs_dirname)
