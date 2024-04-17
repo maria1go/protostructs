@@ -1,1 +1,0 @@
-struct folder from the FoldTree output 
