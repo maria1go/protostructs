@@ -86,8 +86,17 @@ def main():
     #Step 9 - Run MAFFT
     subprocess.run(["python3", "step9.py"], check=True)
  
-    #Step 10 -  MSA visualization (3 plots)
+    #Step 10 -  MSA visualization 1: sequence alignment coverage
     subprocess.run(["python3", "step10.py"], check=True)
+
+    #Step 11 - MSA visualization 2: structure alignment coverage
+    subprocess.run(["python3", "step11.py"], check=True)
+
+    #Step 12 - Run MAFFT
+    subprocess.run(["python3", "step12.py"], check=True)
+
+    #Step 13 - MSA visualization 3: combined alignment coverage
+    subprocess.run(["python3", "step13.py"], check=True)
 
 
 if __name__ == "__main__":
