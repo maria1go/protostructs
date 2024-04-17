@@ -62,7 +62,7 @@ Files:
 10. str_msa.fasta - MSA of protein sequences obtained from structural alignment (MAFFT)
 11. str (folder) - .pdb files of str-aligned proteins found by FoldTree
 10. combined.fasta - sequences of proteins found via homology search by sequence (and further filtered) + sequences of proteins found by structural alignment combined in one file
-11. combined.msa.fasta - MSA of all found protein sequenes altogether
+11. combined.msa.fasta - MSA of all found protein sequences altogether
 12. seq_alignment_coverage.png - MSA coverage visualisation for proteins obtained by sequence-based approach 
 13. str_alignment_coverage.png - MSA coverage visualisation for proteins obtained by structure-based approach 
 14. combined_alignment_coverage.png - MSA coverage visualisation for both sets of proteins combined
