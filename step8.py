@@ -28,9 +28,9 @@ import shutil
 structs = "../fold_tree/fromstr/structs"
 source = structs
 
-pipeline = "../protostructs/results"
+pipeline = "../protostructs"
 os.chdir(pipeline)
-destination = "str"
+destination = "results/str"
 
 try:
     shutil.copytree(source, destination)
